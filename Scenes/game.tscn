@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgi0cvx1dn6lr"]
+
+[ext_resource type="Texture2D" uid="uid://bjcw4wqe7gsth" path="res://Assets/360_F_637915894_xioRfH3tMwJ7EopQqoGCe5dkzjPYMJLx.jpg" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://yowhdiynfomj" path="res://Scenes/player.tscn" id="2_qxrlw"]
+
+[node name="Game" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 651.0
+texture = ExtResource("1_ebmjs")
+
+[node name="Player" parent="." instance=ExtResource("2_qxrlw")]
+position = Vector2(568, 600)
+scale = Vector2(0.6, 0.6)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
