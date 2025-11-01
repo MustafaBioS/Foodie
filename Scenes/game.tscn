@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgi0cvx1dn6lr"]
+[gd_scene load_steps=4 format=3 uid="uid://bgi0cvx1dn6lr"]
 
 [ext_resource type="Texture2D" uid="uid://bjcw4wqe7gsth" path="res://Assets/360_F_637915894_xioRfH3tMwJ7EopQqoGCe5dkzjPYMJLx.jpg" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://yowhdiynfomj" path="res://Scenes/player.tscn" id="2_qxrlw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
+size = Vector2(43, 651)
 
 [node name="Game" type="Node2D"]
 
@@ -16,3 +19,16 @@ scale = Vector2(0.6, 0.6)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
+
+[node name="Left" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(-22, 324)
+shape = SubResource("RectangleShape2D_qxrlw")
+
+[node name="Right" type="StaticBody2D" parent="."]
+position = Vector2(1197, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(-23, 324)
+shape = SubResource("RectangleShape2D_qxrlw")

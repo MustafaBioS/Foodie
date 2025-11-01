@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp3o4t3uetd2i"]
+
+[ext_resource type="Texture2D" uid="uid://cx0vslelrxaag" path="res://Assets/fries.png" id="1_j4egf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_je8qv"]
+radius = 24.0
+
+[node name="Fries" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_j4egf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_je8qv")
