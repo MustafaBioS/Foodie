@@ -1,17 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0qr6nn4cao2s"]
+[gd_scene load_steps=4 format=3 uid="uid://d0qr6nn4cao2s"]
 
 [ext_resource type="Texture2D" uid="uid://c3ip1krjxv2iy" path="res://Assets/Coca-cola-can.png" id="1_c3vx7"]
+[ext_resource type="Script" uid="uid://x12k1uhe08gk" path="res://Scripts/cola.gd" id="1_mdeqi"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdeqi"]
-radius = 12.0
-height = 40.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_87l83"]
+radius = 15.0
+height = 50.0
 
-[node name="Fries" type="StaticBody2D"]
+[node name="Cola" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_mdeqi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_c3vx7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_mdeqi")
+[node name="ColaArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColaArea"]
+shape = SubResource("CapsuleShape2D_87l83")
+
+[connection signal="body_entered" from="ColaArea" to="." method="_on_cola_area_body_entered"]

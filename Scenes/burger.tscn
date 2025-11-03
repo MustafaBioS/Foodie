@@ -1,15 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://btcdwmikwtvf5"]
+[gd_scene load_steps=4 format=3 uid="uid://btcdwmikwtvf5"]
 
+[ext_resource type="Script" uid="uid://cavb5xlbg6gds" path="res://Scripts/burger.gd" id="1_je8qv"]
 [ext_resource type="Texture2D" uid="uid://bwi3y6ih2jmhp" path="res://Assets/burger.png" id="1_ys118"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_je8qv"]
-radius = 24.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_goknm"]
+radius = 24.020824
 
-[node name="Burger" type="StaticBody2D"]
+[node name="Burger" type="CharacterBody2D"]
+script = ExtResource("1_je8qv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_ys118")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_je8qv")
+[node name="BurgerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BurgerArea"]
+shape = SubResource("CircleShape2D_goknm")
+
+[connection signal="body_entered" from="BurgerArea" to="." method="_on_burger_area_body_entered"]

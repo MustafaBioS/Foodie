@@ -1,0 +1,239 @@
+[gd_scene load_steps=14 format=3 uid="uid://b7hw6334cjy1f"]
+
+[ext_resource type="Texture2D" uid="uid://bjcw4wqe7gsth" path="res://Assets/360_F_637915894_xioRfH3tMwJ7EopQqoGCe5dkzjPYMJLx.jpg" id="1_a0mxf"]
+[ext_resource type="Script" uid="uid://d2ll8iii3623a" path="res://Scripts/shop.gd" id="1_io27d"]
+[ext_resource type="FontFile" uid="uid://jqn3e02qe0en" path="res://Fonts/Minecraft.ttf" id="2_2shtd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2shtd"]
+texture = ExtResource("1_a0mxf")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_io27d"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdj0q"]
+bg_color = Color(0.5689727, 0.56897277, 0.5689727, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2shtd"]
+bg_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6jq0"]
+bg_color = Color(0.45064825, 0.4506483, 0.45064813, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2shtd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ps1r"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ymrm4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s8dlv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tyrku"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_io27d")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2shtd")
+
+[node name="Overlay" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShopTitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.0
+offset_top = 97.0
+offset_right = 89.0
+offset_bottom = 173.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_2shtd")
+theme_override_font_sizes/font_size = 75
+text = "Shop"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -37.0
+offset_right = 384.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Speed" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.2159017, 0.21590173, 0.2159017, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_2shtd")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_io27d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fdj0q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2shtd")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_k6jq0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2shtd")
+text = "Speed Boost"
+
+[node name="Score" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.2159017, 0.21590173, 0.2159017, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_2shtd")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_io27d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fdj0q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2shtd")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_k6jq0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2shtd")
+text = "Score Multiplier"
+
+[node name="Drops" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.2159017, 0.21590173, 0.2159017, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_2shtd")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_io27d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fdj0q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2shtd")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_k6jq0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2shtd")
+text = "Faster Drops"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = 44.0
+offset_right = 384.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="SpeedPrice" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.93333334, 0.63529414, 0.3137255, 1)
+theme_override_fonts/font = ExtResource("2_2shtd")
+theme_override_font_sizes/font_size = 40
+text = "25"
+horizontal_alignment = 1
+
+[node name="ScorePrice" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.93333334, 0.63529414, 0.3137255, 1)
+theme_override_fonts/font = ExtResource("2_2shtd")
+theme_override_font_sizes/font_size = 40
+text = "50"
+horizontal_alignment = 1
+
+[node name="DropPrice" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.93333334, 0.63529414, 0.3137255, 1)
+theme_override_fonts/font = ExtResource("2_2shtd")
+theme_override_font_sizes/font_size = 40
+text = "100"
+horizontal_alignment = 1
+
+[node name="LeftArrow" type="Button" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 17.0
+offset_right = 221.0
+offset_bottom = 138.0
+theme_override_colors/font_pressed_color = Color(0.49747366, 0.49747366, 0.49747366, 1)
+theme_override_colors/font_hover_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_3ps1r")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ymrm4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_s8dlv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tyrku")
+text = "←"
+
+[connection signal="pressed" from="HBoxContainer/Speed" to="." method="_on_speed_pressed"]
+[connection signal="pressed" from="HBoxContainer/Score" to="." method="_on_score_pressed"]
+[connection signal="pressed" from="HBoxContainer/Drops" to="." method="_on_drops_pressed"]
+[connection signal="pressed" from="LeftArrow" to="." method="_on_left_arrow_pressed"]

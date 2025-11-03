@@ -1,4 +1,50 @@
-[gd_scene format=3 uid="uid://bij5mt4r6wun5"]
+[gd_scene load_steps=14 format=3 uid="uid://bij5mt4r6wun5"]
+
+[ext_resource type="Texture2D" uid="uid://bjcw4wqe7gsth" path="res://Assets/360_F_637915894_xioRfH3tMwJ7EopQqoGCe5dkzjPYMJLx.jpg" id="1_1rerr"]
+[ext_resource type="Script" uid="uid://cebxy3qwwkju4" path="res://Scripts/menu.gd" id="1_cayip"]
+[ext_resource type="FontFile" uid="uid://jqn3e02qe0en" path="res://Fonts/Minecraft.ttf" id="2_xhh6f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xhh6f"]
+texture = ExtResource("1_1rerr")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhh6f"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cayip"]
+bg_color = Color(0.61745507, 0.61745465, 0.6174547, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_158mb"]
+bg_color = Color(0.796243, 0.796243, 0.796243, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xhh6f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwsa2"]
+bg_color = Color(0, 0, 0, 0.39215687)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsrd8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cayip"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_158mb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wwsa2"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -7,3 +53,145 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cayip")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xhh6f")
+
+[node name="Overlay" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.0
+offset_top = 81.0
+offset_right = 115.0
+offset_bottom = 157.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.93212205, 0.63612133, 0.31180295, 1)
+theme_override_fonts/font = ExtResource("2_xhh6f")
+theme_override_font_sizes/font_size = 75
+text = "Foodie"
+
+[node name="BtnCon" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.5
+offset_top = -80.0
+offset_right = 117.5
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Play" type="Button" parent="BtnCon"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.014275194, 0.014275219, 0.014275289, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_xhh6f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/hover = SubResource("StyleBoxFlat_158mb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xhh6f")
+text = "Play"
+
+[node name="Options" type="Button" parent="BtnCon"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.014275194, 0.014275219, 0.014275289, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_xhh6f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/hover = SubResource("StyleBoxFlat_158mb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xhh6f")
+text = "Options"
+
+[node name="Exit" type="Button" parent="BtnCon"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.014275194, 0.014275219, 0.014275289, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_xhh6f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/hover = SubResource("StyleBoxFlat_158mb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xhh6f")
+text = "Exit
+"
+
+[node name="OptionsTab" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Panel" parent="OptionsTab"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -425.5
+offset_top = -254.88281
+offset_right = 425.5
+offset_bottom = 254.88281
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wwsa2")
+
+[node name="Title" type="Label" parent="OptionsTab"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 117.0
+offset_right = 120.0
+offset_bottom = 183.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_xhh6f")
+theme_override_font_sizes/font_size = 65
+text = "Options"
+
+[node name="LeftArrow" type="Button" parent="OptionsTab"]
+offset_left = 162.0
+offset_top = 74.0
+offset_right = 363.0
+offset_bottom = 195.0
+theme_override_colors/font_pressed_color = Color(0.49747366, 0.49747366, 0.49747366, 1)
+theme_override_colors/font_hover_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_jsrd8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cayip")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_158mb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wwsa2")
+text = "←"
+
+[connection signal="pressed" from="BtnCon/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="BtnCon/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="BtnCon/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="OptionsTab/LeftArrow" to="." method="_on_left_arrow_pressed"]

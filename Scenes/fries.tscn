@@ -1,15 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bp3o4t3uetd2i"]
+[gd_scene load_steps=4 format=3 uid="uid://bp3o4t3uetd2i"]
 
+[ext_resource type="Script" uid="uid://cy1rei4wtongn" path="res://Scripts/fries.gd" id="1_dmifm"]
 [ext_resource type="Texture2D" uid="uid://cx0vslelrxaag" path="res://Assets/fries.png" id="1_j4egf"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_je8qv"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dmifm"]
 radius = 24.0
 
-[node name="Fries" type="StaticBody2D"]
+[node name="Fries" type="CharacterBody2D"]
+script = ExtResource("1_dmifm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_j4egf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_je8qv")
+[node name="FriesArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FriesArea"]
+shape = SubResource("CircleShape2D_dmifm")
+
+[connection signal="body_entered" from="FriesArea" to="." method="_on_fries_area_body_entered"]

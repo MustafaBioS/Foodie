@@ -181,7 +181,6 @@ theme_override_font_sizes/font_size = 50
 text = "0"
 
 [node name="Pause" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("6_i6g32")
 
 [node name="PauseBackground" type="Panel" parent="Pause"]
@@ -295,7 +294,6 @@ text = "Exit
 "
 
 [node name="Shop" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Shop" type="Control" parent="Shop"]
 layout_mode = 3
@@ -529,17 +527,6 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ldgsr")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_o5yvi")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rku1e")
 text = "←"
-
-[node name="Label" type="Label" parent="."]
-offset_left = -9.0
-offset_top = 29.0
-offset_right = 1525.0
-offset_bottom = 538.0
-theme_override_font_sizes/font_size = 75
-text = "TO ADD:
-Fading animatiion black
-only 5 buys for each upgrade
-win screen when we get 5 in all btn"
 
 [connection signal="timeout" from="FoodSpawner/Timer" to="FoodSpawner" method="_on_timer_timeout"]
 [connection signal="pressed" from="Pause/BtnCon/Resume" to="Pause" method="_on_resume_pressed"]
