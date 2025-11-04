@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://btcdwmikwtvf5"]
+[gd_scene load_steps=5 format=3 uid="uid://btcdwmikwtvf5"]
 
 [ext_resource type="Script" uid="uid://cavb5xlbg6gds" path="res://Scripts/burger.gd" id="1_je8qv"]
 [ext_resource type="Texture2D" uid="uid://bwi3y6ih2jmhp" path="res://Assets/burger.png" id="1_ys118"]
+[ext_resource type="AudioStream" uid="uid://8hjx1pni6qfe" path="res://Sounds/mixkit-chewing-something-crunchy-2244.wav" id="3_goknm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_goknm"]
 radius = 24.020824
@@ -17,5 +18,9 @@ texture = ExtResource("1_ys118")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BurgerArea"]
 shape = SubResource("CircleShape2D_goknm")
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_goknm")
+bus = &"SFX"
 
 [connection signal="body_entered" from="BurgerArea" to="." method="_on_burger_area_body_entered"]

@@ -1,8 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://bij5mt4r6wun5"]
+[gd_scene load_steps=23 format=3 uid="uid://bij5mt4r6wun5"]
 
 [ext_resource type="Texture2D" uid="uid://bjcw4wqe7gsth" path="res://Assets/360_F_637915894_xioRfH3tMwJ7EopQqoGCe5dkzjPYMJLx.jpg" id="1_1rerr"]
 [ext_resource type="Script" uid="uid://cebxy3qwwkju4" path="res://Scripts/menu.gd" id="1_cayip"]
 [ext_resource type="FontFile" uid="uid://jqn3e02qe0en" path="res://Fonts/Minecraft.ttf" id="2_xhh6f"]
+[ext_resource type="AudioStream" uid="uid://bfxsux6tgyq3s" path="res://Sounds/game-music-loop-12-147170.mp3" id="4_158mb"]
+[ext_resource type="Script" uid="uid://bnk0bwxp87opi" path="res://Scripts/audio.gd" id="4_wwsa2"]
+[ext_resource type="Script" uid="uid://buedxadqxus1m" path="res://Scripts/fullscreen.gd" id="5_jsrd8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xhh6f"]
 texture = ExtResource("1_1rerr")
@@ -45,6 +48,14 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_158mb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wwsa2"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cayip"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_158mb"]
+color = Color(0, 0.6468835, 0.9153437, 1)
+thickness = 6
 
 [sub_resource type="Animation" id="Animation_cayip"]
 resource_name = "FadeIn"
@@ -243,6 +254,109 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_158mb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wwsa2")
 text = "←"
 
+[node name="Label" type="Label" parent="OptionsTab"]
+offset_left = 340.0
+offset_top = 217.0
+offset_right = 487.0
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 20
+text = "Master Volume"
+
+[node name="Master" type="HSlider" parent="OptionsTab"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.25
+offset_top = -85.0
+offset_right = 236.25
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_cayip")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_158mb")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_158mb")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("4_wwsa2")
+bus_name = "Master"
+
+[node name="Label2" type="Label" parent="OptionsTab"]
+offset_left = 340.0
+offset_top = 285.0
+offset_right = 487.0
+offset_bottom = 320.0
+theme_override_font_sizes/font_size = 20
+text = "Music Volume"
+
+[node name="Music" type="HSlider" parent="OptionsTab"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.25
+offset_top = -18.0
+offset_right = 236.25
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_cayip")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_158mb")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_158mb")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("4_wwsa2")
+bus_name = "Music"
+
+[node name="Label3" type="Label" parent="OptionsTab"]
+offset_left = 340.0
+offset_top = 358.0
+offset_right = 550.0
+offset_bottom = 393.0
+theme_override_font_sizes/font_size = 20
+text = "Sound Effects Volume"
+
+[node name="SFX" type="HSlider" parent="OptionsTab"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.25
+offset_top = 55.0
+offset_right = 236.25
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_cayip")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_158mb")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_158mb")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("4_wwsa2")
+bus_name = "SFX"
+
+[node name="Fullscreen" type="CheckButton" parent="OptionsTab"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.25
+offset_top = 107.0
+offset_right = 246.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Fullscreen"
+script = ExtResource("5_jsrd8")
+
 [node name="Fade" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Fade"]
@@ -258,7 +372,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_jsrd8")
 }
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_158mb")
+autoplay = true
+bus = &"Music"
+
 [connection signal="pressed" from="BtnCon/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="BtnCon/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="BtnCon/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="OptionsTab/LeftArrow" to="." method="_on_left_arrow_pressed"]
+[connection signal="value_changed" from="OptionsTab/Master" to="OptionsTab/Master" method="_on_value_changed"]
+[connection signal="value_changed" from="OptionsTab/Music" to="OptionsTab/Master" method="_on_music_value_changed"]
+[connection signal="value_changed" from="OptionsTab/SFX" to="OptionsTab/Master" method="_on_sfx_value_changed"]
+[connection signal="toggled" from="OptionsTab/Fullscreen" to="OptionsTab/Fullscreen" method="_on_toggled"]

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+@onready var sfx = $SFX
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -15,5 +15,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_burger_area_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
+		sfx.play()
 		queue_free()
 		State.score += State.scoreMulti
