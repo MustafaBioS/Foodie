@@ -29,5 +29,5 @@ func spawn() -> void:
 	add_child(food)
 
 func _on_timer_timeout() -> void:
-	if State.paused == false and State.options == false and State.shop == false:
+	if State.paused == false and State.options == false and State.shop == false and State.win == false:
 		spawn()

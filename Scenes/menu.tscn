@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bij5mt4r6wun5"]
+[gd_scene load_steps=18 format=3 uid="uid://bij5mt4r6wun5"]
 
 [ext_resource type="Texture2D" uid="uid://bjcw4wqe7gsth" path="res://Assets/360_F_637915894_xioRfH3tMwJ7EopQqoGCe5dkzjPYMJLx.jpg" id="1_1rerr"]
 [ext_resource type="Script" uid="uid://cebxy3qwwkju4" path="res://Scripts/menu.gd" id="1_cayip"]
@@ -45,6 +45,58 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_158mb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wwsa2"]
+
+[sub_resource type="Animation" id="Animation_cayip"]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_158mb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wwsa2"]
+resource_name = "Fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jsrd8"]
+_data = {
+&"FadeIn": SubResource("Animation_cayip"),
+&"Fadeout": SubResource("Animation_wwsa2"),
+&"RESET": SubResource("Animation_158mb")
+}
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -190,6 +242,21 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_cayip")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_158mb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wwsa2")
 text = "←"
+
+[node name="Fade" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Fade"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fade"]
+libraries = {
+&"": SubResource("AnimationLibrary_jsrd8")
+}
 
 [connection signal="pressed" from="BtnCon/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="BtnCon/Options" to="." method="_on_options_pressed"]

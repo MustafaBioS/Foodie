@@ -13,3 +13,5 @@ var dropPrice = 3
 var scoreMulti = 1
 var dropSec = 3
 var shop = false
+var win = false
+var cont = false

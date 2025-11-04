@@ -4,7 +4,8 @@ extends CanvasLayer
 @onready var title = $PauseTitle
 @onready var options = $"../OptionsTab"
 @onready var shop = $"../Shop"
-
+@onready var anim = $"../Fade/AnimationPlayer"
+@onready var fade = $"../Fade"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,6 +36,8 @@ func _on_options_pressed() -> void:
 	options.visible = true
 	
 func _on_menu_pressed() -> void:
+	anim.play("Fadeout")
+	fade.visible = true
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 	
 func _on_exit_pressed() -> void:
@@ -67,3 +70,4 @@ func _on_left_arrow_2_pressed() -> void:
 	shop.visible = false
 	btns.visible = true
 	title.visible = true
+ 

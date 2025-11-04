@@ -4,14 +4,13 @@ extends Control
 
 @onready var options = $OptionsTab
 @onready var arrow = $OptionsTab/LeftArrow
+@onready var anim = $Fade/AnimationPlayer
+@onready var fade = $Fade
 
 func _ready() -> void:
 	btns.visible = true
 	title.visible = true
 	options.visible = false
-
-func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 	State.SPEED = 750.0
 	State.score = 0
 	State.paused = false
@@ -25,6 +24,17 @@ func _on_play_pressed() -> void:
 	State.scoreMulti = 1
 	State.dropSec = 3
 	State.shop = false
+	State.win = false
+	State.cont = false
+	anim.play("FadeIn")
+	await get_tree().create_timer(1.0).timeout
+	fade.visible = false
+	
+func _on_play_pressed() -> void:
+	anim.play("Fadeout")
+	fade.visible = true
+	get_tree().change_scene_to_file("res://Scenes/game.tscn")
+
 
 func _on_options_pressed() -> void:
 	btns.visible = false

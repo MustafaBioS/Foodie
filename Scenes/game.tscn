@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bgi0cvx1dn6lr"]
+[gd_scene load_steps=33 format=3 uid="uid://bgi0cvx1dn6lr"]
 
 [ext_resource type="Texture2D" uid="uid://bjcw4wqe7gsth" path="res://Assets/360_F_637915894_xioRfH3tMwJ7EopQqoGCe5dkzjPYMJLx.jpg" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://bsrisvv840ffd" path="res://Scripts/food_spawner.gd" id="1_wrm1d"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://jqn3e02qe0en" path="res://Fonts/Minecraft.ttf" id="5_wowpa"]
 [ext_resource type="Script" uid="uid://bsbxil0onhax1" path="res://Scripts/pause.gd" id="6_i6g32"]
 [ext_resource type="Script" uid="uid://d2ll8iii3623a" path="res://Scripts/shop.gd" id="7_1l0tm"]
+[ext_resource type="FontFile" uid="uid://dq1sidubjd4fq" path="res://Fonts/Karina.ttf" id="8_v158k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
 size = Vector2(43, 651)
@@ -91,6 +92,58 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5yvi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rku1e"]
+
+[sub_resource type="Animation" id="Animation_cayip"]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_158mb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wwsa2"]
+resource_name = "Fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jsrd8"]
+_data = {
+&"FadeIn": SubResource("Animation_cayip"),
+&"Fadeout": SubResource("Animation_wwsa2"),
+&"RESET": SubResource("Animation_158mb")
+}
 
 [node name="Game" type="Node2D"]
 
@@ -181,7 +234,6 @@ theme_override_font_sizes/font_size = 50
 text = "0"
 
 [node name="Pause" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("6_i6g32")
 
 [node name="PauseBackground" type="Panel" parent="Pause"]
@@ -295,7 +347,6 @@ text = "Exit
 "
 
 [node name="Shop" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Shop" type="Control" parent="Shop"]
 layout_mode = 3
@@ -485,7 +536,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_tyrku")
 text = "←"
 
 [node name="OptionsTab" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Background" type="Panel" parent="OptionsTab"]
 anchors_preset = 8
@@ -530,16 +580,90 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_o5yvi")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rku1e")
 text = "←"
 
-[node name="Label" type="Label" parent="."]
-offset_left = -9.0
-offset_top = 29.0
-offset_right = 1525.0
-offset_bottom = 538.0
-theme_override_font_sizes/font_size = 75
-text = "TO ADD:
-Fading animatiion black
-only 5 buys for each upgrade
-win screen when we get 5 in all btn"
+[node name="Fade" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Fade"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fade"]
+libraries = {
+&"": SubResource("AnimationLibrary_jsrd8")
+}
+
+[node name="Win" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="Win"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Win"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -223.0
+offset_top = -200.0
+offset_right = 223.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.46664637, 0.9818525, 1.540184e-06, 1)
+theme_override_fonts/font = ExtResource("8_v158k")
+theme_override_font_sizes/font_size = 100
+text = "YOU WIN"
+
+[node name="BtnCon" type="VBoxContainer" parent="Win"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.125
+offset_top = -22.0
+offset_right = 121.125
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Continue" type="Button" parent="Win/BtnCon"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.014275194, 0.014275219, 0.014275289, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_wowpa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i6g32")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1l0tm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v158k")
+text = "Continue Playing"
+
+[node name="BackMenu" type="Button" parent="Win/BtnCon"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.014275194, 0.014275219, 0.014275289, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_wowpa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i6g32")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1l0tm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v158k")
+text = "Main Menu"
 
 [connection signal="timeout" from="FoodSpawner/Timer" to="FoodSpawner" method="_on_timer_timeout"]
 [connection signal="pressed" from="Pause/BtnCon/Resume" to="Pause" method="_on_resume_pressed"]
@@ -552,3 +676,5 @@ win screen when we get 5 in all btn"
 [connection signal="pressed" from="Shop/Shop/HBoxContainer/Drops" to="Shop/Shop" method="_on_drops_pressed"]
 [connection signal="pressed" from="Shop/Shop/LeftArrow2" to="Pause" method="_on_left_arrow_2_pressed"]
 [connection signal="pressed" from="OptionsTab/LeftArrow" to="Pause" method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="Win/BtnCon/Continue" to="Shop/Shop" method="_on_continue_pressed"]
+[connection signal="pressed" from="Win/BtnCon/BackMenu" to="Shop/Shop" method="_on_back_menu_pressed"]
