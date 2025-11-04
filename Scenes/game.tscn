@@ -120,21 +120,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_158mb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_wwsa2"]
 resource_name = "Fadeout"
 tracks/0/type = "value"
@@ -148,6 +133,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_158mb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jsrd8"]
@@ -167,7 +167,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_qxrlw")]
 position = Vector2(568, 600)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.45, 0.45)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
@@ -230,6 +230,7 @@ position = Vector2(1092, 0)
 [node name="Timer" type="Timer" parent="FoodSpawner"]
 
 [node name="Score" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("4_3dryh")
 
 [node name="ScoreLabel" type="Label" parent="Score"]
@@ -246,6 +247,7 @@ theme_override_font_sizes/font_size = 50
 text = "0"
 
 [node name="Pause" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("6_i6g32")
 
 [node name="PauseBackground" type="Panel" parent="Pause"]
@@ -359,6 +361,7 @@ text = "Exit
 "
 
 [node name="Shop" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Shop" type="Control" parent="Shop"]
 layout_mode = 3
@@ -548,6 +551,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_tyrku")
 text = "←"
 
 [node name="OptionsTab" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Background" type="Panel" parent="OptionsTab"]
 anchors_preset = 8
