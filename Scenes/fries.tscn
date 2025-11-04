@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp3o4t3uetd2i"]
+[gd_scene load_steps=4 format=3 uid="uid://bp3o4t3uetd2i"]
 
 [ext_resource type="Script" uid="uid://cy1rei4wtongn" path="res://Scripts/fries.gd" id="1_dmifm"]
 [ext_resource type="Texture2D" uid="uid://cx0vslelrxaag" path="res://Assets/fries.png" id="1_j4egf"]
-[ext_resource type="AudioStream" uid="uid://8hjx1pni6qfe" path="res://Sounds/mixkit-chewing-something-crunchy-2244.wav" id="3_lg2hq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dmifm"]
 radius = 24.0
@@ -18,9 +17,5 @@ texture = ExtResource("1_j4egf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FriesArea"]
 shape = SubResource("CircleShape2D_dmifm")
-
-[node name="SFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_lg2hq")
-bus = &"SFX"
 
 [connection signal="body_entered" from="FriesArea" to="." method="_on_fries_area_body_entered"]

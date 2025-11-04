@@ -5,6 +5,7 @@ var burgerS = preload("uid://btcdwmikwtvf5")
 var friesS = preload("uid://bp3o4t3uetd2i")
 var colaS = preload("uid://d0qr6nn4cao2s")
 @onready var time = $Timer
+@onready var sfx = $"../SFX"
 
 
 func _ready() -> void:
@@ -32,3 +33,4 @@ func spawn() -> void:
 func _on_timer_timeout() -> void:
 	if State.paused == false and State.options == false and State.shop == false and State.win == false:
 		spawn()
+		sfx.play()
